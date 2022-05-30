@@ -2,6 +2,8 @@
 -- VALUES(1,'Mike Smith');
 
 
-INSERT INTO student(id,first_name,last_name,email)
+INSERT INTO students(id,student_first_name,student_last_name,email)
 VALUES(1,'Mike','Smith','mike@cydeo.com');
+
+
 

@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 @Table(name="employees")
@@ -14,7 +13,17 @@ import java.util.Date;
 @Data
 public class Employee extends BaseEntity{
 
-    private String firstName;
+    public Employee(String firstNane, String lastName, String email, LocalDate hireDate, Gender gender, int salary) {
+        this.firstNane = firstNane;
+        this.lastName = lastName;
+        this.email = email;
+        this.hireDate = hireDate;
+        this.gender = gender;
+        this.salary = salary;
+    }
+
+
+    private String firstNane;
     private String lastName;
     private String email;
     @Column(columnDefinition = "DATE")
@@ -23,21 +32,7 @@ public class Employee extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToOne(cascade = CascadeType.ALL)
-//    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-    @JoinColumn(name="department_id")
-    private Department department;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="region_id")
-    private Region region;
 
-    public Employee(String firstName, String lastName, String email, LocalDate hireDate, int salary, Gender gender) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.hireDate = hireDate;
-        this.salary = salary;
-        this.gender = gender;
-    }
+
 }
