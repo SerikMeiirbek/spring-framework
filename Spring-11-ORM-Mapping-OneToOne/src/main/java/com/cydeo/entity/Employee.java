@@ -13,16 +13,6 @@ import java.time.LocalDate;
 @Data
 public class Employee extends BaseEntity{
 
-    public Employee(String firstNane, String lastName, String email, LocalDate hireDate, Gender gender, int salary) {
-        this.firstNane = firstNane;
-        this.lastName = lastName;
-        this.email = email;
-        this.hireDate = hireDate;
-        this.gender = gender;
-        this.salary = salary;
-    }
-
-
     private String firstNane;
     private String lastName;
     private String email;
@@ -32,7 +22,21 @@ public class Employee extends BaseEntity{
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
+    public Department department;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "region_id")
+    public Region region;
 
+    public Employee(String firstNane, String lastName, String email, LocalDate hireDate, int salary,Gender gender)  {
+        this.firstNane = firstNane;
+        this.lastName = lastName;
+        this.email = email;
+        this.hireDate = hireDate;
+        this.gender = gender;
+        this.salary = salary;
+    }
 
 }
