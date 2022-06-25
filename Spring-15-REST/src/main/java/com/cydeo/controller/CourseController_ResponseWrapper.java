@@ -1,6 +1,6 @@
 package com.cydeo.controller;
 
-import com.cydeo.dto.entity.ResponseWrapper;
+import com.cydeo.entity.ResponseWrapper;
 import com.cydeo.service.CourseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
