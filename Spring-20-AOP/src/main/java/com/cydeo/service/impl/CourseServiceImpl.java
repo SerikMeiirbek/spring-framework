@@ -1,9 +1,10 @@
 package com.cydeo.service.impl;
 
+import com.cydeo.annotation.Loggable;
 import com.cydeo.dto.CourseDTO;
+import com.cydeo.service.CourseService;
 import com.cydeo.entity.Course;
 import com.cydeo.repository.CourseRepository;
-import com.cydeo.service.CourseService;
 import com.cydeo.util.MapperUtil;
 import org.springframework.stereotype.Service;
 
@@ -68,6 +69,7 @@ public class CourseServiceImpl implements CourseService {
         courseRepository.deleteAll();
     }
 
+    @Loggable
     @Override
     public void deleteCourseById(Long courseId) {
         courseRepository.deleteById(courseId);
