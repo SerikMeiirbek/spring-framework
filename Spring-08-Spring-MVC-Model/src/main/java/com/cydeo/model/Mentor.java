@@ -2,6 +2,7 @@ package com.cydeo.model;
 
 import com.cydeo.enums.Gender;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 @Data

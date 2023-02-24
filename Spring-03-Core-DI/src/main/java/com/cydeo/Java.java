@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class Java {
 
-    /*@Autowired
+    /*@Autowired field injection
     OfficeHours officeHours;*/
 
 
     OfficeHours officeHours;
 
-    /*Constructor Injection
+    /*Constructor Injection from Spring 4.3 if there is only one constructor @Autowired can be omitted
     @Autowired
     public Java(OfficeHours officeHours){
         this.officeHours = officeHours;

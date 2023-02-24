@@ -25,6 +25,7 @@ public class ConfigCar {
      */
 
     /*Autowiring*/
+    /* Pass an object as method parameter so Spring will automatically will check if the bean has been defined */
     @Bean
     Person person(Car car){
         Person p = new Person();

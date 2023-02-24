@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
@@ -25,11 +25,14 @@
 <!--Adding Parameters to Link-->
 <a th:href="@{/student/welcome(id=3)}">Link2</a><br>
 <a th:href="@{/student/welcome(id=${students.get(0).firstName})}">Link2</a><br>
+<br>
+<br>
 
 <!--Iteration-->
+<ul>
+    <li th:each="student : ${students}" th:text="${student.firstName}"></li>
+</ul>
 
-<br>
-<br>
 
 <tbody>
 <thread>

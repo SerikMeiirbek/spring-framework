@@ -14,9 +14,13 @@ public class CydeoApp {
 
         PartTimeMentor pt = container.getBean(PartTimeMentor.class);
 
+        Mentor mt = container.getBean(Mentor.class);
+
         ft.createAccount();
 
         pt.createAccount();
+
+        mt.createAccount();
 
         String str = container.getBean(String.class);
         System.out.println(str);
