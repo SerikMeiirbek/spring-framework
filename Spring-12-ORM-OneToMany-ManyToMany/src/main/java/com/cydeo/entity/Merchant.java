@@ -11,7 +11,8 @@ import java.util.List;
 @Table(name="merchants")
 @Data
 @NoArgsConstructor
-public class Merchant {
+public class
+Merchant {
 
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)

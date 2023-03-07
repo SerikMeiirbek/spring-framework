@@ -17,7 +17,7 @@ public class Department extends BaseEntity{
     private String division;
 
     @OneToOne(mappedBy = "department")
-    private Employee employees;
+    private Employee employee;
 
     public Department(String department, String division) {
         this.department = department;
