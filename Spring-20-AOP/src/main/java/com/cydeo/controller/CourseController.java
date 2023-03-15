@@ -15,7 +15,7 @@ public class CourseController {
 
     private final CourseService courseService;
 
-    Logger logger = LoggerFactory.getLogger(CourseController.class);
+//    Logger logger = LoggerFactory.getLogger(CourseController.class);
     public CourseController(CourseService courseService) {
         this.courseService = courseService;
     }
@@ -39,7 +39,7 @@ public class CourseController {
         return courseService.getCoursesByCategory(category);
     }
 
-    @Loggable
+        @Loggable
     @PostMapping
     public CourseDTO createCourse(@RequestBody CourseDTO course) {
         return courseService.createCourse(course);

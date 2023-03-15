@@ -16,13 +16,13 @@ public class LoggingAspect {
 
     Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
-//    @Pointcut("execution(* com.cydeo.controller.CourseController.*(..))")
-//    private void pointcut(){}
+    @Pointcut("execution(* com.cydeo.controller.CourseController.*(..))")
+    public void pointcut(){}
 
-//    @Before("pointcut()")
-//    public void log(){
-//        logger.info("Logger info -------");
-//    }
+    @Before("pointcut()")
+    public void log(){
+        logger.info("Logger info -------");
+    }
 
 //    @Before("execution(* com.cydeo.controller.CourseController.*(..))")
 //    public void beforeAdvice(){
@@ -59,6 +59,7 @@ public class LoggingAspect {
 
 //    @Pointcut("@annotation(org.springframework.web.bind.annotation.GetMapping)")
 //    private void anyGetCourseOperation(){}
+
 //    @Before("anyGetCourseOperation()")
 //    public void beforeControllerAdvice(JoinPoint joinPoint){
 //        logger.info("Before: -> Method: {} - Arguments: {} - Target: {}", joinPoint, joinPoint.getArgs(), joinPoint.getTarget());
@@ -68,7 +69,7 @@ public class LoggingAspect {
 //    public void beforeControllerAdvice(JoinPoint joinPoint, Object result){
 //        logger.info("After returning: -> Method: {} - result: {} ", joinPoint.getSignature().toShortString(), result.toString());
 //    }
-//
+
 //    @AfterReturning(pointcut = "anyGetCourseOperation()", returning = "result")
 //    public void beforeControllerAdvice(JoinPoint joinPoint, List<Object> result){
 //        logger.info("After returning:(List) -> Method: {} - result: {} ", joinPoint.getSignature().toShortString(), result.toString());
@@ -85,15 +86,15 @@ public class LoggingAspect {
 //    }
 
 
-    @Pointcut("@annotation(com.cydeo.annotation.Loggable)")
-    private void anyLoggableMethodOperation(){}
-
-    @Around("anyLoggableMethodOperation()")
-    public Object anyLoggableMethodOperationAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-        logger.info("Before () -> Method : {} - Parameters: {}", proceedingJoinPoint.getSignature().toShortString(), proceedingJoinPoint.getArgs());
-        Object results;
-        results = proceedingJoinPoint.proceed();
-        logger.info("After -> Method: {} - Result: {} ", proceedingJoinPoint.getSignature().toShortString(), results.toString());
-        return results;
-    }
+//    @Pointcut("@annotation(com.cydeo.annotation.Loggable)")
+//    private void anyLoggableMethodOperation(){}
+//
+//    @Around("anyLoggableMethodOperation()")
+//    public Object anyLoggableMethodOperationAdvice(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+//        logger.info("Before () -> Method : {} - Parameters: {}", proceedingJoinPoint.getSignature().toShortString(), proceedingJoinPoint.getArgs());
+//        Object results;
+//        results = proceedingJoinPoint.proceed();
+//        logger.info("After -> Method: {} - Result: {} ", proceedingJoinPoint.getSignature().toShortString(), results.toString());
+//        return results;
+//    }
 }

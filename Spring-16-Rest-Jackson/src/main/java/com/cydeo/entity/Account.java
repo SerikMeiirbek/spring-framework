@@ -18,9 +18,11 @@ import javax.persistence.*;
 @JsonIgnoreProperties(value = {"hibernateLazyInitializer"},ignoreUnknown = true)
 public class Account extends BaseEntity {
 
+    @JsonIgnore
     private String name;
     @JsonIgnore
     private String address;
+    @JsonIgnore
     private String country;
     private String state;
     private String city;
