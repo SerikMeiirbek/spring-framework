@@ -25,8 +25,7 @@ public class UserServiceImplTest {
 
         userService.deleteByUserName("mikesmith@cydeo.com");
 
-
-        verify(userRepository).deleteByUserName("mikesmith@cydeo.com");
+//        verify(userRepository).deleteByUserName("mikesmith@cydeo.com");
 //        verify(userRepository, times(2)).deleteByUserName("mikesmith@cydeo.com");
 //        verify(userRepository, atLeastOnce()).deleteByUserName("mikesmith@cydeo.com");
 //        verify(userRepository, atLeast(5)).deleteByUserName("mikesmith@cydeo.com");
@@ -36,8 +35,10 @@ public class UserServiceImplTest {
         InOrder inOrder = inOrder(userRepository);
 //        inOrder.verify(userRepository).findAll();
         inOrder.verify(userRepository).deleteByUserName("mikesmith@cydeo.com");
-//        inOrder.verify(userRepository).findAll();
+        inOrder.verify(userRepository).findAll();
     }
+
+
 
 
 }

@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @WebMvcTest(WelcomeController.class)
 class WelcomeControllerTest {
 
@@ -23,20 +22,16 @@ class WelcomeControllerTest {
     @Test
     void welcome() throws Exception {
 
-        // call /welcome endpoint
-        // verify "welcome"
-
         RequestBuilder request = MockMvcRequestBuilders.get("/welcome")
                 .accept(MediaType.APPLICATION_JSON);
 
         MvcResult result = mvc.perform(request).andReturn();
         assertEquals(200, result.getResponse().getStatus());
         assertEquals("welcome", result.getResponse().getContentAsString());
-
     }
 
     @Test
-    void welcome2() throws Exception {
+    void welcome2() throws Exception{
 
         RequestBuilder request = MockMvcRequestBuilders.get("/welcome")
                 .accept(MediaType.APPLICATION_JSON);
@@ -46,6 +41,6 @@ class WelcomeControllerTest {
                 .andExpect(content().string("welcome"))
                 .andReturn();
 
-
     }
+
 }

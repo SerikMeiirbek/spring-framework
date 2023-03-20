@@ -15,9 +15,9 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(StudentController.class)
 class StudentControllerTest {
@@ -32,8 +32,8 @@ class StudentControllerTest {
     void getStudent() throws Exception {
 
         mvc.perform(MockMvcRequestBuilders
-                        .get("/student")
-                        .accept(MediaType.APPLICATION_JSON))
+                .get("/student")
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"id\": 0, \"firstName\": \"Mike\", \"lastName\": \"Smith\", \"age\": 20}"))
                 .andReturn();
@@ -54,15 +54,16 @@ class StudentControllerTest {
     void getStudent_service() throws Exception {
 
         when(studentService.getStudent()).thenReturn(Arrays.asList(
-                new Student("John", "Doe", 20),
-                new Student("Tom", "Hanks", 50)
+                        new Student("John", "Doe", 20),
+                        new Student("Tom", "Hanks", 50)
         ));
 
         mvc.perform(MockMvcRequestBuilders
-                        .get("/service/student")
-                        .accept(MediaType.APPLICATION_JSON))
-                .andExpect(content().json("[{\"id\": 0, \"firstName\": \"John\", \"lastName\": \"Doe\", \"age\": 20},{\"id\": 0, \"firstName\": \"Tom\", \"lastName\": \"Hanks\", \"age\": 50}]"))
+                    .get("/service/student")
+                .accept(MediaType.APPLICATION_JSON))
+                .andExpect(content().json("[{\"id\":0, \"firstName\": \"John\", \"lastName\": \"Doe\", \"age\": 20}, {\"id\":0, \"firstName\": \"Tom\", \"lastName\": \"Hanks\", \"age\": 50}]"))
                 .andReturn();
+
 
     }
 

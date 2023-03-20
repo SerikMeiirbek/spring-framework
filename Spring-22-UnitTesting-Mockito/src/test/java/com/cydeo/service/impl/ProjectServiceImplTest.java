@@ -3,7 +3,10 @@ package com.cydeo.service.impl;
 import com.cydeo.dto.ProjectDTO;
 import com.cydeo.entity.Project;
 import com.cydeo.mapper.ProjectMapper;
+import com.cydeo.mapper.UserMapper;
 import com.cydeo.repository.ProjectRepository;
+import com.cydeo.service.TaskService;
+import com.cydeo.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -25,6 +28,7 @@ class ProjectServiceImplTest {
 
     @InjectMocks
     ProjectServiceImpl projectService;
+
 
     @Test
     void getByProjectCode_test(){
@@ -73,5 +77,6 @@ class ProjectServiceImplTest {
         projectService.save(projectDTO);
 
         verify(projectRepository).save(project);
+        verify(projectMapper).convertToEntity(any(ProjectDTO.class));
     }
 }
