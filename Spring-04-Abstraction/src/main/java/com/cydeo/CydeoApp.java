@@ -6,6 +6,8 @@ import com.cydeo.service.CommentService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import java.util.WeakHashMap;
+
 public class CydeoApp {
     public static void main(String[] args) {
 
@@ -17,6 +19,7 @@ public class CydeoApp {
 
         CommentService commentService = context.getBean(CommentService.class);
         commentService.publishComment(comment);
+
 
     }
 }

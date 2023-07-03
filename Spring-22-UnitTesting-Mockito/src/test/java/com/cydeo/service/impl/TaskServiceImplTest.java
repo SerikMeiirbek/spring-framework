@@ -1,5 +1,6 @@
 package com.cydeo.service.impl;
 
+
 import com.cydeo.dto.TaskDTO;
 import com.cydeo.entity.Project;
 import com.cydeo.entity.Role;
@@ -7,14 +8,11 @@ import com.cydeo.entity.Task;
 import com.cydeo.entity.User;
 import com.cydeo.enums.Gender;
 import com.cydeo.enums.Status;
-import com.cydeo.mapper.ProjectMapper;
 import com.cydeo.mapper.TaskMapper;
 import com.cydeo.repository.TaskRepository;
-import com.cydeo.repository.UserRepository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -22,33 +20,18 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-
 import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.BDDMockito.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.BDDMockito.then;
+import static org.mockito.Mockito.*;
 
 @ContextConfiguration(classes = {TaskServiceImpl.class})
 @ExtendWith(MockitoExtension.class)
 class TaskServiceImplTest {
 
-    @MockBean
-    private ProjectMapper projectMapper;
-
-    @Autowired
-    private TaskServiceImpl taskServiceImpl;
-
-    @MockBean
-    private UserRepository userRepository;
 
     @Mock
     TaskRepository taskRepository;
@@ -71,9 +54,11 @@ class TaskServiceImplTest {
 
         //When
         taskService.findById(id);
-
+//        taskService.findById(anyLong());
         //Then
-        verify(taskRepository.findById(id));
+        verify(taskRepository).findById(id);
+        verify(taskRepository).findById(anyLong());
+        verify(taskMapper).convertToDTO(task);
         verify(taskMapper).convertToDTO(any(Task.class));
 
 //        verify(taskRepository, never()).findById(-5L);
@@ -163,11 +148,17 @@ class TaskServiceImplTest {
         task.setTaskDetail("Task Detail");
         task.setTaskStatus(Status.OPEN);
         task.setTaskSubject("Hello from the Dreaming Spires");
+
         Optional<Task> ofResult = Optional.of(task);
+
         when(taskRepository.findById((Long) org.mockito.Mockito.any())).thenReturn(ofResult);
+
         TaskDTO taskDTO = new TaskDTO();
+
         when(taskMapper.convertToDTO((Task) org.mockito.Mockito.any())).thenReturn(taskDTO);
-        assertSame(taskDTO, taskServiceImpl.findById(123L));
+
+        assertSame(taskDTO, taskService.findById(123L));
+
         verify(taskRepository).findById((Long) org.mockito.Mockito.any());
         verify(taskMapper).convertToDTO((Task) org.mockito.Mockito.any());
     }

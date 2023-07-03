@@ -24,21 +24,20 @@ public class UserServiceImplTest {
     void deleteByUsername_test(){
 
         userService.deleteByUserName("mikesmith@cydeo.com");
+//        userService.listAllUsers();
 
 //        verify(userRepository).deleteByUserName("mikesmith@cydeo.com");
+//        verify(userRepository).findAll();
 //        verify(userRepository, times(2)).deleteByUserName("mikesmith@cydeo.com");
 //        verify(userRepository, atLeastOnce()).deleteByUserName("mikesmith@cydeo.com");
 //        verify(userRepository, atLeast(5)).deleteByUserName("mikesmith@cydeo.com");
 //        verify(userRepository, atMostOnce()).deleteByUserName("mikesmith@cydeo.com");
 //        verify(userRepository, atMost(5)).deleteByUserName("mikesmith@cydeo.com");
-
+//
         InOrder inOrder = inOrder(userRepository);
 //        inOrder.verify(userRepository).findAll();
         inOrder.verify(userRepository).deleteByUserName("mikesmith@cydeo.com");
         inOrder.verify(userRepository).findAll();
     }
-
-
-
 
 }
